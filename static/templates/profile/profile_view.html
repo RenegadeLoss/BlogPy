@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block style%}
+<link rel="stylesheet" href="{% static 'css/create.css'%}" />
+{% endblock %}
+{% block content%}
+    <div class="main_container">
+        <div class="row justify-content-center align-items-center g-2">
+            {% if request.user.is_authenticated %}
+                {% if request.user.id == creator.id %}
+                <div class="new_post">
+                    <form action="{% url 'create_post' %}" method="post">
+                    {% csrf_token %}
+                    <label id="label_form"><strong>Заголовок</strong></strong></label>
+                    <div class="text_create_form">{{ post_form.label }}</div>
+                    <label id="label_form"><strong>Теги</strong>, через запятую</label>
+                    <div class="text_create_form">{{ post_form.tag }}</div>
+                    <label id="label_form"><strong>Основной текст</strong></label>
+                    <div class="text_create_form">{{ post_form.text }}</div>
+                    {% if form.subject.errors %}
+                        <ol>
+                        {% for error in form.subject.errors %}
+                            <li><strong>{{ error|escape }}</strong></li>
+                        {% endfor %}
+                        </ol>
+                    {% endif %}
+                    <div class="button_create_form"><input type="submit" value="Пост"></div>
+                    </form>
+                </div>
+                {% endif%}
+            {% endif %}
+            {% for post in posts %}
+            <div class="post_container">
+                <div class="creator_info">
+                    <img src="/media/{{ user.profile.foto }}" class="user_image"/>
+                    <a href="{{ user.profile.get_absolute_url }}" class="name_creator"> {{ creator.username }}</a>
+                </div>
+                    <p>{%for tag in post.display_tags %}
+                        <a class="post_tag" href="?tag={{tag}}"> {{ tag }} </a>
+                        {% endfor %}
+                    </p>
+                    <h4 class="content_title"> {{ post.label }}</h4>
+                
+                <div class="content_post"> {{ post.text }} </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="side_bar">
+    <div class="side_bar_block" >
+        <img class="user_image" src="/media/{{ creator.profile.foto }}"/>
+        <p>{{ creator.username }}</p>
+    </div>
+    <div class="side_bar_block" > Block two</div>
+    <div class="side_bar_block" > Block three</div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/create.css'%}" />
+{% endblock %}
+
+{% block content %}
+    <div class="create_container">
+        <form action="." method="post">
+            <input type="hidden" name="creator" value="{{ user.id }}" />
+            {{ post_form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <p><input type="submit" value="Подтвердить"></p>
+        </form>
+    </div>
+{% endblock content %}
+
+{%block sidebar%}
+{%endblock%}

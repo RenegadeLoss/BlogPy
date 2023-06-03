@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/list_post.css'%}" />
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+        {% for item in page_obj %}
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="post_container">
+                <div class="creator_info">
+                    <img src="/media/{{ item.creator.profile.foto }}" class="user_image"/>
+                    <a href="{{ item.creator.profile.get_absolute_url }}" class="name_creator"> {{ item.creator }}</a>
+                </div>
+                    <p> {%for tag in item.display_tags %}
+                        <a class="post_tag" href="?tag={{tag}}"> {{ tag }} </a>
+                        {% endfor %}
+                    </p>
+                    <h4 class="content_title"> {{ item.label }}</h4>
+                
+                <div class="content_post"> {{item.text }} </div>
+                <div><a href="{{ item.get_absolute_url }}"> Ссылка</a></div>
+            </div>
+            
+        </div>
+        {% endfor %}
+        {% block pagination %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endblock %}
+    </div>
+    
+{% endblock %}
+
+

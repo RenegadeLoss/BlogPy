@@ -1,0 +1,17 @@
+
+
+div.text_create_form > input {
+    width: 100%;
+}
+
+div.text_create_form > textarea#id_text {
+    width: 100%;
+}
+
+div.button_create_form > input {
+    display: block;
+    width: 90px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: 20%;
+}

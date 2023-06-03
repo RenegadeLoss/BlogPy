@@ -1,0 +1,156 @@
+
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    padding-bottom: 200px;
+    border: 3px solid red;
+    
+}
+
+body {
+    background-color: rgba(219, 216, 201, 0.822);
+}
+
+
+header {
+    margin-bottom: 8rem;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    background-color: rgba(17, 17, 17, 0.781);
+    color: rgba(240, 255, 255, 0.541);
+}
+
+container.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: inherit;
+    margin-left: 5rem;
+}
+
+a.nav_link, a.auth_link{
+    color: rgba(240, 255, 255, 0.541);
+    display: inline-block;
+    text-decoration: none;
+}
+
+ a.nav_link:hover a.auth_link:hover{
+    color: rgba(139, 138, 138, 0.747);
+    text-decoration: underline;
+}
+
+.header_item {
+    min-height: 30px;
+    align-items: center;
+}
+
+.user.header_item {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+}
+.header_item#one{
+    flex-grow: 1;
+}
+
+.head_nav_links {
+    display: flex;
+    flex-grow: 3;
+    justify-content: space-evenly;
+}
+
+.header_item#three{
+    flex-grow: 4;
+}
+
+.user_image {
+    height: 60;
+    width: 60;
+}
+
+.log-in_logout {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.log-in {
+    display: block;
+    padding-right: 1em;
+}
+.logout {
+    display: block;
+    padding-left: 0.5em;
+}
+
+a.self_link {
+    color: white;
+}
+
+a.self_link:hover{
+    text-decoration: none;
+}
+
+div.content_body {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15em;
+    margin-right: 10em;
+    margin-bottom: 50px;
+    background-color: aliceblue;
+    border: 2px solid rgb(255, 54, 47);
+}
+
+div.main_container {
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: aliceblue;
+}
+
+a.post_tag {
+    padding-right: 5px;
+    color:  rgba(88, 88, 88, 0.856) ;
+    font-size: 17px;
+}
+
+a.post_tag:hover {
+    text-decoration: none;
+}
+
+
+
+/*  SIDE BAR */
+div.side_bar {
+    height: 300px;
+    min-width: 35%; 
+    border: 1px solid green;
+    display: block;
+}
+
+div.side_bar_block {
+    border: 1px rgb(17, 17, 17) solid;
+    color:rgb(5, 5, 5); 
+    height: 100px;
+}
+
+
+
+/* FOOTER */
+footer {
+    margin-top: -100px;
+    height: 100px;
+    border: 3px black solid;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* !!! */
+
+.text_create_form{
+    width: 80%;
+}
